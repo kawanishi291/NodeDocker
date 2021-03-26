@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
     connection.query('SELECT * from user',
             function (error, results, fields) {
         if (error == null) {
-            var data = {title:'mysql', content:results};
+            var data = {title:'User', content:results};
             res.render('demo2', data);
         }
     });
