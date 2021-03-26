@@ -9,7 +9,9 @@ var usersRouter = require('./routes/users');
 // 追記
 var hello = require('./routes/hello');
 var demo1 = require('./routes/demo1');
+var demo1p = require('./routes/demo1p');
 var demo2 = require('./routes/demo2');
+var demo3 = require('./routes/demo3');
 // 追記
 
 var app = express();
@@ -29,7 +31,9 @@ app.use('/users', usersRouter);
 // 追記
 app.use('/hello', hello);
 app.use('/demo1', demo1);
+app.use('/demo1p', demo1p);
 app.use('/demo2', demo2);
+app.use('/demo3', demo3);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
