@@ -12,7 +12,7 @@
     </head>
     <div id="app" role="main">
         <p><%- content %></p>
-        <form method="POST" action="/demo1/post">
+        <form method="POST" action="/demo1p/post">
             <li><p>名前</p>
                 <label for="f_name">氏</label>
                 <input type="text" name="f_name" id="f_name">
@@ -20,12 +20,12 @@
                 <input type="text" name="l_name" id="l_name">
             </li>
             <li><p>メールアドレス</p>
-                <label for="mail"></label>
-                <input v-model="email" type="email" name="mail" id="mail">
+                <label for="email"></label>
+                <input v-model="email" type="email" name="email" id="email">
             </li>
             <li><p>メールアドレス(確認用)</p>
-                <label for="mail2"></label>
-                <input v-model="email2" type="email" name="mail2" id="mail2" v-on:keyup="checkemail()">
+                <label for="email2"></label>
+                <input v-model="email2" type="email" name="email2" id="email2" v-on:keyup="checkeemail()">
                 <p v-html='emailMsg'></p>
             </li>
             <li><p>パスワード</p>
@@ -54,7 +54,6 @@
                 <input type="radio" name="gender" value="none" id="none">
             </li>
             <input type="submit" value="送信"　v-bind:disabled="submit===false">
-            <p v-html='myText'></p>
         </form>
     </div>
 </body>
