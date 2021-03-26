@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 new Vue({
     el:'#app',
     data: {
-        myText:"<h1>Hello Vue.js!!</h1>",
         pass: '',
         pass2: '',
         passMsg: "",
@@ -23,7 +22,7 @@ new Vue({
                 this.submit = false;
             }
         },
-        checkemail: function(){
+        checkeemail: function(){
             if (this.email == this.email2){
                 this.emailMsg = "";
                 if(this.pass == this.pass2 && this.pass != '' && this.pass2 != ''){
