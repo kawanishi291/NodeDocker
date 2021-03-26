@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <head>
+        <h1><%= title %></h1>
+    </head>
+    <div id="app" role="main">
+        <p>お名前：<%- name %></p>
+        <p>メールアドレス：<%- email %></p>
+        <p>生年月日：<%- year %>年<%- month %>月<%- day %>日</p>
+        <p>性別：<%- gender %></p>
+        <form method="POST" action="/demo3/post">
+            <input type="text" name="name" value="<%- name %>">
+            <input type="email" name="email" value="<%- email %>">
+            <input type="password" name="pass" value="<%- pass %>">
+            <input type="number" name="year" value="<%- year %>">
+            <input type="number" name="month" value="<%- month %>">
+            <input type="number" name="day" value="<%- day %>">
+            <input type="text" name="gender" value="<%- gender %>">
+            <input type="submit" value="送信"　v-bind:disabled="submit===false">
+        </form>
+    </div>
+</body>
+</html>
