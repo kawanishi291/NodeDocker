@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script type="text/javascript" src='/javascripts/demo1vue.js'></script>
+</head>
+<body>
+    <head>
+        <h1><%= title %></h1>
+    </head>
+    <div id="app" role="main">
+        <p><%- content %></p>
+        <form method="POST" action="/demo1/post">
+            <li><p>名前</p>
+                <label for="f_name">氏</label>
+                <input type="text" name="f_name" id="f_name">
+                <label for="l_name">名</label>
+                <input type="text" name="l_name" id="l_name">
+            </li>
+            <li><p>メールアドレス</p>
+                <label for="mail"></label>
+                <input v-model="email" type="email" name="mail" id="mail">
+            </li>
+            <li><p>メールアドレス(確認用)</p>
+                <label for="mail2"></label>
+                <input v-model="email2" type="email" name="mail2" id="mail2" v-on:keyup="checkemail()">
+                <p v-html='emailMsg'></p>
+            </li>
+            <li><p>パスワード</p>
+                <label for="pass"></label>
+                <input v-model="pass" type="password" name="pass" id="pass">
+            </li>
+            <li><p>パスワード(確認用)</p>
+                <label for="pass2"></label>
+                <input v-model="pass2" type="password" name="pass2" id="pass2" v-on:keyup="checkpass()">
+                <p v-html='passMsg'></p>
+            </li>
+            <li><p>生年月日</p>
+                <label for="year">年(西暦)</label>
+                <input type="number" name="year" id="year">
+                <label for="month">月</label>
+                <input type="number" name="month" id="month">
+                <label for="day">日</label>
+                <input type="number" name="day" id="day">
+            </li>
+            <li><p>性別</p>
+                <label for="men">男</label>
+                <input type="radio" name="gender" value="men" id="men">
+                <label for="women">女</label>
+                <input type="radio" name="gender" value="women" id="women">
+                <label for="none">その他</label>
+                <input type="radio" name="gender" value="none" id="none">
+            </li>
+            <input type="submit" value="送信"　v-bind:disabled="submit===false">
+            <p v-html='myText'></p>
+        </form>
+    </div>
+</body>
+</html>
