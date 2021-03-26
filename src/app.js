@@ -6,6 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+// 追記
+var hello = require('./routes/hello');
+var demo1 = require('./routes/demo1');
+var demo2 = require('./routes/demo2');
+// 追記
 
 var app = express();
 
@@ -21,6 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// 追記
+app.use('/hello', hello);
+app.use('/demo1', demo1);
+app.use('/demo2', demo2);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// 追記
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
