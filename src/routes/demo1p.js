@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require('bcrypt');
 
 router.post('/post', (req, res, next) => {
     var f_name = req.body['f_name'];
@@ -17,12 +18,14 @@ router.post('/post', (req, res, next) => {
     }else if(gender == "none"){
         gender = "その他"
     }
+    // ハッシュ化
+    let hashed_password = bcrypt.hashSync(pass, 10);
 
     var data = {
         title: "登録確認画面",
         name: f_name+l_name,
         email: email,
-        pass: pass,
+        pass: hashed_password,
         year: year,
         month: month,
         day: day,
