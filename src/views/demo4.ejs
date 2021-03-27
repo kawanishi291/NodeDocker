@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <head>
+        <h1><%= title %></h1>
+    </head>
+    <div id="app" role="main">
+        <p><%- content %></p>
+        <form method="POST" action="/demo4/post">
+            <li><p>メールアドレス</p>
+                <label for="email"></label>
+                <input v-model="email" type="email" name="email" id="email">
+            </li>
+            <li><p>パスワード</p>
+                <label for="pass"></label>
+                <input v-model="pass" type="password" name="pass" id="pass">
+            </li>
+            <input type="submit" value="送信"　v-bind:disabled="submit===false">
+        </form>
+    </div>
+</body>
+</html>
