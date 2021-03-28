@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script type="text/javascript" src='/javascripts/demo1vue.js'></script>
+    <!-- <link rel="stylesheet" href="/stylesheets/signin.css"> -->
+</head>
+<body class="text-center w-50" style="margin:auto">
+    <div id="app" role="main" class="container">
+        <main class="form-signin">
+        <head>
+            <h1><%= title %></h1>
+        </head>
+        <p><%- content %></p>
+        <form method="POST" action="/signup/post">
+            <p>名前</p>
+                <label for="f_name" class="visually-hidden">氏</label>
+                <input type="text" name="f_name" id="f_name" class="form-control" placeholder="First Name">
+                <label for="l_name" class="visually-hidden">名</label>
+                <input type="text" name="l_name" id="l_name" class="form-control" placeholder="Last Name">
+            <p>メールアドレス</p>
+                <label for="email"></label>
+                <input v-model="email" type="email" name="email" id="email" class="form-control" placeholder="Email address">
+            <p>メールアドレス(確認用)</p>
+                <label for="email2"></label>
+                <input v-model="email2" type="email" name="email2" id="email2" v-on:keyup="checkeemail()" class="form-control" placeholder="Email address">
+                <p v-html='emailMsg'></p>
+            <p>パスワード</p>
+                <label for="pass"></label>
+                <input v-model="pass" type="password" name="pass" id="pass" class="form-control" placeholder="Password">
+            <p>パスワード(確認用)</p>
+                <label for="pass2"></label>
+                <input v-model="pass2" type="password" name="pass2" id="pass2" v-on:keyup="checkpass()" class="form-control" placeholder="Password">
+                <p v-html='passMsg'></p>
+            <p>生年月日</p>
+                <label for="year" class="visually-hidden">年(西暦)</label>
+                <input type="number" name="year" id="year" class="form-control" placeholder="Year">
+                <label for="month" class="visually-hidden">月</label>
+                <input type="number" name="month" id="month" class="form-control" placeholder="Month">
+                <label for="day" class="visually-hidden">日</label>
+                <input type="number" name="day" id="day" class="form-control" placeholder="Day">
+            <p>性別</p>
+                <label for="men">男</label>
+                <input type="radio" name="gender" value="men" id="men">
+                <label for="women">女</label>
+                <input type="radio" name="gender" value="women" id="women">
+                <label for="none">その他</label>
+                <input type="radio" name="gender" value="none" id="none">
+            <input type="submit" value="送信"　v-bind:disabled="submit===false" class="mt-2 w-100 btn btn-lg btn-primary">
+        </form>
+        </main>
+    </div>
+</body>
+</html>

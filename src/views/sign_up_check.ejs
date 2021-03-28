@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <head>
+        <h1><%= title %></h1>
+    </head>
+    <div id="app" role="main">
+        <p>お名前：<%- name %></p>
+        <p>メールアドレス：<%- email %></p>
+        <p>生年月日：<%- year %>年<%- month %>月<%- day %>日</p>
+        <p>性別：<%- gender %></p>
+        <form method="POST" action="/signup/push">
+            <input type="hidden" name="name" value="<%- name %>">
+            <input type="hidden" name="email" value="<%- email %>">
+            <input type="hidden" name="pass" value="<%- pass %>">
+            <input type="hidden" name="year" value="<%- year %>">
+            <input type="hidden" name="month" value="<%- month %>">
+            <input type="hidden" name="day" value="<%- day %>">
+            <input type="hidden" name="gender" value="<%- gender %>">
+            <p>この内容でよろしければ確定ボタンを押してください。</p>
+            <input type="submit" value="確定"　v-bind:disabled="submit===false">
+        </form>
+    </div>
+</body>
+</html>
