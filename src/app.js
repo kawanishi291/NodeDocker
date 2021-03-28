@@ -13,6 +13,8 @@ var demo1p = require('./routes/demo1p');
 var demo2 = require('./routes/demo2');
 var demo3 = require('./routes/demo3');
 var demo4 = require('./routes/demo4');
+var signup = require('./routes/signup');
+var login = require('./routes/login');
 // 追記
 
 var app = express();
@@ -36,6 +38,8 @@ app.use('/demo1p', demo1p);
 app.use('/demo2', demo2);
 app.use('/demo3', demo3);
 app.use('/demo4', demo4);
+app.use('/signup', signup);
+app.use('/login', login);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

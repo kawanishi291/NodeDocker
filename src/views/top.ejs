@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <head>
+        <h1><%= title %></h1>
+    </head>
+    <div id="app" role="main">
+        <% for(var i in content) { %>
+            <tr>
+                <% var obj = content[i]; %>
+                <th scope="row"><%= obj.id %></th>
+                <td><%= obj.name %></td>
+                <td><%= obj.email %></td>
+                <td><%= obj.pass %></td>
+                <td><%= obj.year %></td>
+                <td><%= obj.month %></td>
+                <td><%= obj.day %></td>
+                <td><%= obj.gender %></td>
+            </tr>
+        <% } %>
+    </div>
+</body>
+</html>
