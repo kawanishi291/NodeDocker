@@ -8,12 +8,29 @@ var mysql_setting = mySqlSettingModule();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    var data = {
-        title: "ログイン画面",
-        content: "Please sign in",
-        msg: ''
-    };
-    res.render("login", data);
+
+    if(req.session.userid != undefined){
+
+        var connection = mysql.createConnection(mysql_setting);
+        connection.connect();
+        connection.query('SELECT * from user where id=?',
+            req.session.userid, function (error, results, fields) {
+            if (error == null) {
+                console.log(results);
+                data = {title:'Welcome', content:results, id:req.session.userid};
+                res.render('top', data);
+            }
+        });
+
+    }else{
+        console.log(typeof req.session.userid);
+        var data = {
+            title: "ログイン画面",
+            content: "Please sign in",
+            msg: ""
+        };
+        res.render("login", data);
+    }
 });
 
 router.post('/post', (req, res, next) => {
@@ -39,22 +56,15 @@ router.post('/post', (req, res, next) => {
                 // ture・false判定
                 var check = bcrypt.compareSync(pass, results[0]['pass'])
                 if (check){
-                    data = {title:'User', content:results};
+                    req.session.userid = results[0]['id'];
+                    data = {title:'Welcome', content:results, id:req.session.userid};
                     res.render('top', data);
                 } else{
                     data.msg = "Password is wrong";
-                    // var data = {
-                    //     title: "ログイン画面",
-                    //     content: "Password is wrong"
-                    // };
                     res.render("login", data);
                 }
             }else{
                 data.msg = "Email Not Found";
-                // var data = {
-                //     title: "ログイン画面",
-                //     content: "Email Not Found"
-                // };
                 res.render("login", data);
             }
             
