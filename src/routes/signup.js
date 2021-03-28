@@ -10,12 +10,35 @@ var mysql_setting = mySqlSettingModule();
 router.get('/', (req, res, next) => {
     var data = {
         title: "会員登録画面",
-        content: "入力し、送信して下さい。"
+        content: "入力し、送信して下さい。",
+        f_name: "",
+        l_name: "",
+        email: "",
+        pass: "",
+        year: "",
+        month: "",
+        day: "",
+        gender: ""
     };
     res.render("sign_up", data);
 });
 
 router.post('/post', (req, res, next) => {
+    if(req.body['pass'].length < 4){
+        var data = {
+            title: "会員登録画面",
+            content: "パスワードは4文字以上にしてください。",
+            f_name: req.body['f_name'],
+            l_name: req.body['l_name'],
+            email: req.body['email'],
+            pass: "",
+            year: req.body['year'],
+            month: req.body['month'],
+            day: req.body['day'],
+            gender: req.body['gender']
+        };
+        res.render("sign_up", data);
+    }
     var f_name = req.body['f_name'];
     var l_name = req.body['l_name'];
     var email = req.body['email'];
